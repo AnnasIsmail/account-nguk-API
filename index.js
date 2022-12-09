@@ -5,7 +5,7 @@ const PORT = 5000;
 var bodyParser = require('body-parser');
 
 require('./database/dbConnect');
-const access = require('./model/access');
+const logs = require('./model/logs');
 const accessRoutes = require('./routes/access');
 const logsRoutes = require('./routes/logs');
 const accountsRoutes = require('./routes/accounts');
@@ -18,7 +18,7 @@ const server = require('http').createServer(app);
 server.listen(PORT);
 
 app.get('/', async (req , res) => {
-    const access_result = await access.find();
+    const access_result = await logs.find();
     res.status(200).json({
         status: 200,
         data: access_result
